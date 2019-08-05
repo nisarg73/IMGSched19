@@ -74,6 +74,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'IMGSched.wsgi.application'
 
+#Google Sign-in 
+AUTHENTICATION_BACKENDS = (
+ 'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+ 'social_core.backends.google.GoogleOpenId',  # for Google authentication
+ 'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+ 
+ 'django.contrib.auth.backends.ModelBackend',
+)
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='545976024438-49vu2ugva47cemblmjltvf6gc19apgjq.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'wDauUBIs94pwlVxRLXQgF0O6'
+
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases

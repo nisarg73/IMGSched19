@@ -17,4 +17,16 @@ class EventModel(models.Model):
 	def __str__(self):
 		return self.creator.username
 
+class CommentModel(models.Model):
+	commentor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+	event = models.ForeignKey(EventModel, on_delete=models.CASCADE)
+	comment = models.TextField()
+	timestamp = models.DateTimeField(default=timezone.now)
+
+	def __str__(self):
+		return '%d: %s' % (self.id, self.comment)
+
+	class Meta:
+		ordering = ('timestamp', )		
+
 	
