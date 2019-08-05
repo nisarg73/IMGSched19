@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+             <p>Yo! {{ user.username }}</p>
+	{% else %}
+             <a href="{% url 'login' %}">Log in</a>
+	{% endif %}
+{% endblock content %}
