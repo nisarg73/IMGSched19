@@ -11,12 +11,12 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-
+from django.http import HttpResponseRedirect
+from rest_framework import status
+from rest_framework.decorators import api_view
+from .serializers import UserSerializerWithToken
 
 #Create your views here.
-
-def home(request):
-	return render(request, 'home.html')
 
 
 class UserList(generics.ListAPIView):
@@ -121,3 +121,11 @@ class CommentDetail(APIView):
         com = self.get_object(pk)
         com.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET'])
+def current_user(request):
+    """
+    Determine the current user by their token, and return their data
+    """
+    serializer = UserSerializer(request.user)
+    return Response(serializer.data)

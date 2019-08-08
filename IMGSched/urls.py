@@ -21,13 +21,14 @@ from django.contrib.auth import views
 #from SchedAPI.views import home
 from django.contrib.auth import views as auth_views
 
+from rest_framework_jwt.views import obtain_jwt_token
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('token-auth/', obtain_jwt_token),
+    
     path('', include('SchedAPI.urls')),
-    url(r'^auth/', include('social_django.urls', namespace='social')), 
-    #url(r'^login/', auth_views.LoginView.as_view(), name='login'),
-    #url(r'^logout/', auth_views.LogoutView.as_view(), {'next_page':'login/'} , name='logout'),
-    #url(r'', views.home, name='home'),
+    path('api-auth/', include('rest_framework.urls')),
 ]
 
 

@@ -1,13 +1,15 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
-from . import views
+from SchedAPI import views
 from django.conf.urls import include
 
 #from SchedAPI.views import EventViewSet, UserViewSet
 from rest_framework import renderers
 
 
+
 urlpatterns = [
+	path('current_user/', views.current_user),
     path('events/', views.EventList.as_view()),
     path('events/<int:pk>/', views.EventDetail.as_view()),
     path('users/', views.UserList.as_view()),
