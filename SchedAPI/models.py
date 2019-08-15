@@ -17,6 +17,9 @@ class EventModel(models.Model):
 	def __str__(self):
 		return self.creator.username
 
+	class Meta:
+		ordering = ('posted_on', )	
+
 class CommentModel(models.Model):
 	commentor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
 	event = models.ForeignKey(EventModel, on_delete=models.CASCADE)

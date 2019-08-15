@@ -3,6 +3,7 @@ import Nav from './components/navbar';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import './App.css';
+import GoogleLogin from 'react-google-login';
 
 class App extends Component {
   constructor(props) {
